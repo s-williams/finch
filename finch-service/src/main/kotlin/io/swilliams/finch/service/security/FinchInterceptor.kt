@@ -2,6 +2,7 @@ package io.swilliams.finch.service.security
 
 import io.swilliams.finch.ipapi.IPAPIApi
 import io.swilliams.finch.service.dao.RequestRepository
+import io.swilliams.finch.service.dao.RequestService
 import io.swilliams.finch.service.exceptions.FinchSecurityException
 import io.swilliams.finch.service.model.Request
 import io.swilliams.finch.service.security.RequestBlockers.isValidCountry
@@ -19,7 +20,7 @@ import java.util.*
 
 @Component
 class FinchInterceptor(
-    @Autowired val requestRepository: RequestRepository,
+    @Autowired val requestService: RequestService,
     @Autowired val ipApiClient: IPAPIApi
 ): HandlerInterceptor {
 
@@ -64,7 +65,7 @@ class FinchInterceptor(
         saveRequest(request, response.status.toString())
     }
 
-    private fun saveRequest(request: HttpServletRequest, responseCode: String) = requestRepository.save(Request(
+    private fun saveRequest(request: HttpServletRequest, responseCode: String) = requestService.save(Request(
         requestId = request.getAttribute("requestId") as UUID,
         requestUri = request.requestURI,
         requestTimestamp = request.getAttribute("requestTimestamp") as OffsetDateTime,

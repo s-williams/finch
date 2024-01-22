@@ -8,14 +8,16 @@ import java.util.UUID
 
 @Table(name = "requests")
 @Entity
-data class Request(
+class Request(
     @Id
-    val requestId: UUID,
-    val requestUri: String,
-    val requestTimestamp: OffsetDateTime?,
-    val httpResponseCode: String?,
-    val requestIpAddress: String?,
-    val requestCountryCode: String?,
-    val requestIpProvider: String?,
-    val timeLapsed: Long?,
-)
+    var requestId: UUID? = null,
+    var requestUri: String? = null,
+    var requestTimestamp: OffsetDateTime? = null,
+    var httpResponseCode: String? = null,
+    var requestIpAddress: String? = null,
+    var requestCountryCode: String? = null,
+    var requestIpProvider: String? = null,
+    var timeLapsed: Long? = null,
+) {
+
+}

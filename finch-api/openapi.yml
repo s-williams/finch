@@ -1,0 +1,66 @@
+openapi: 3.0.3
+info:
+  title: finch - OpenAPI 3.0
+  version: 1.0.0
+paths:
+  /entries:
+    post:
+      tags:
+        - finch
+      summary: Create entries from file
+      description: Create entries from a CSV file
+      operationId: postEntries
+      requestBody:
+        required: true
+        content:
+          text/plain:
+            schema:
+              type: string
+              format: binary
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/postEntriesResponse'
+        '404':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+        default:
+          description: Unknown error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errorResponse'
+components:
+  schemas:
+    postEntriesResponse:
+      type: object
+      properties:
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/minimalEntry'
+    minimalEntry:
+      type: object
+      properties:
+        name:
+          type: string
+        transport:
+          type: string
+        topSpeed:
+          type: number
+          format: float
+    errorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        status:
+          type: string
+        message:
+          type: string

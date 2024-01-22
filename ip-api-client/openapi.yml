@@ -1,0 +1,57 @@
+openapi: 3.0.3
+info:
+  title: IP API - OpenAPI 3.0
+  description: |-
+    Description of IP API endpoint.
+  version: 1.0.11
+externalDocs:
+  description: IP API docs
+  url: https://ip-api.com/docs/api
+servers:
+  - url: http://ip-api.com
+paths:
+  /json:
+    get:
+      tags:
+        - IP API
+      summary: IP Geolocation
+      description: IP Geolocation
+      operationId: ipGeolocation
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  country:
+                    type: string
+                  countryCode:
+                    type: string
+                  region:
+                    type: string
+                  regionName:
+                    type: string
+                  city:
+                    type: string
+                  zip:
+                    type: string
+                  lat:
+                    type: number
+                    format: float
+                  lon:
+                    type: number
+                    format: float
+                  timezone:
+                    type: string
+                  isp:
+                    type: string
+                  org:
+                    type: string
+                  as:
+                    type: string
+                  query:
+                    type: string

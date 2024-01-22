@@ -1,4 +1,5 @@
 include(
     "finch-api",
-    "finch-service"
+    "finch-service",
+    "ip-api-client"
 )

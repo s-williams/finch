@@ -27,7 +27,13 @@ dependencies {
     implementation("com.h2database:h2")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core")
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+    implementation("com.squareup.moshi:moshi-adapters:1.14.0")
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
+
     implementation(project(":finch-api"))
+    implementation(project(":ip-api-client"))
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation(kotlin("test"))

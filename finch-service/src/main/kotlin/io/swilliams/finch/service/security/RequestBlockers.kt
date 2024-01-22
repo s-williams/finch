@@ -16,8 +16,6 @@ object RequestBlockers {
         "Azure"
     )
 
-    fun isValidRequest(request: IpGeolocation200Response) = isValidCountry(request.country) && isValidIsp(request.isp)
-
     fun isValidCountry(country: String?) = country?.let { !invalidCountries.any { it.lowercase() in country.lowercase() } } ?: true
     fun isValidIsp(isp: String?) = isp?.let { !invalidISPs.any { it.lowercase() in isp.lowercase() } } ?: true
 }

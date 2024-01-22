@@ -18,6 +18,4 @@ class Request(
     var requestCountryCode: String? = null,
     var requestIpProvider: String? = null,
     var timeLapsed: Long? = null,
-) {
-
-}
+)
